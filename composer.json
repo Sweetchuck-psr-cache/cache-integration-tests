@@ -34,9 +34,29 @@
         "sort-packages": true
     },
     "repositories": {
-        "cache/cache": {
+        "cache/adapter-common": {
             "type": "github",
-            "url": "https://github.com/Sweetchuck/cache-cache.git"
+            "url": "https://github.com/Sweetchuck-psr-cache/cache-adapter-common.git"
+        },
+        "cache/illuminate-adapter": {
+            "type": "github",
+            "url": "https://github.com/Sweetchuck-psr-cache/cache-illuminate-adapter.git"
+        },
+        "cache/hierarchical-cache": {
+            "type": "github",
+            "url": "https://github.com/Sweetchuck-psr-cache/cache-hierarchical-cache.git"
+        },
+        "cache/redis-adapter": {
+            "type": "github",
+            "url": "https://github.com/Sweetchuck-psr-cache/cache-redis-adapter.git"
+        },
+        "cache/simple-cache-bridge": {
+            "type": "github",
+            "url": "https://github.com/Sweetchuck-psr-cache/cache-simple-cache-bridge.git"
+        },
+        "cache/tag-interop": {
+            "type": "github",
+            "url": "https://github.com/Sweetchuck-psr-cache/cache-tag-interop.git"
         },
         "tedivm/stash": {
             "type": "github",
@@ -47,7 +67,10 @@
         "php": ">=8.1"
     },
     "require-dev": {
-        "cache/cache": "3.x-dev",
+        "cache/illuminate-adapter": "3.x-dev",
+        "cache/redis-adapter": "3.x-dev",
+        "cache/simple-cache-bridge": "3.x-dev",
+        "cache/tag-interop": "3.x-dev",
         "illuminate/cache": "^10.0",
         "mockery/mockery": "^1.0",
         "phpunit/phpunit": "^10.0",
@@ -62,6 +85,10 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "Cache\\Adapter\\Illuminate\\Tests\\": "vendor/cache/illuminate-adapter/tests/src/",
+            "Cache\\Adapter\\Redis\\Tests\\": "vendor/cache/redis-adapter/tests/src/",
+            "Cache\\Bridge\\SimpleCache\\Tests\\": "vendor/cache/simple-cache-bridge/tests/src/",
+            "Symfony\\Component\\Cache\\Tests\\": "vendor/symfony/cache/Tests/",
             "Cache\\IntegrationTests\\Test\\": "tests/src/"
         }
     },
