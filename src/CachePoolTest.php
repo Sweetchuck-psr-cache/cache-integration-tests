@@ -51,6 +51,8 @@ abstract class CachePoolTest extends TestCase
 
     /**
      * Data provider for invalid keys.
+     *
+     * @phpstan-return array<string, array{0: string}>
      */
     public static function invalidKeys(): array
     {
@@ -502,7 +504,7 @@ abstract class CachePoolTest extends TestCase
     /**
      * @medium
      */
-    public function testExpiration()
+    public function testExpiration(): void
     {
         $this->skipIf(__FUNCTION__);
 
@@ -571,7 +573,7 @@ abstract class CachePoolTest extends TestCase
     /**
      * @dataProvider invalidKeys
      */
-    public function testGetItemInvalidKeys($key): void
+    public function testGetItemInvalidKeys(mixed $key): void
     {
         $this->skipIf(__FUNCTION__);
 
@@ -582,7 +584,7 @@ abstract class CachePoolTest extends TestCase
     /**
      * @dataProvider invalidKeys
      */
-    public function testGetItemsInvalidKeys($key): void
+    public function testGetItemsInvalidKeys(mixed $key): void
     {
         $this->skipIf(__FUNCTION__);
 
@@ -593,7 +595,7 @@ abstract class CachePoolTest extends TestCase
     /**
      * @dataProvider invalidKeys
      */
-    public function testHasItemInvalidKeys($key): void
+    public function testHasItemInvalidKeys(mixed $key): void
     {
         $this->skipIf(__FUNCTION__);
 
@@ -604,7 +606,7 @@ abstract class CachePoolTest extends TestCase
     /**
      * @dataProvider invalidKeys
      */
-    public function testDeleteItemInvalidKeys($key): void
+    public function testDeleteItemInvalidKeys(mixed $key): void
     {
         $this->skipIf(__FUNCTION__);
 
@@ -615,7 +617,7 @@ abstract class CachePoolTest extends TestCase
     /**
      * @dataProvider invalidKeys
      */
-    public function testDeleteItemsInvalidKeys($key): void
+    public function testDeleteItemsInvalidKeys(mixed $key): void
     {
         $this->skipIf(__FUNCTION__);
 

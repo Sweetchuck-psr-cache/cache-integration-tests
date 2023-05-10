@@ -48,6 +48,7 @@ class StashTest extends BaseTest
             'url1' => getenv('CACHE_REDIS_SERVER_URL1') ?: '127.0.0.1:6379',
         ];
 
+        $servers = [];
         $index = 1;
         while ($host = getenv("CACHE_REDIS_SERVER{$index}_HOST")) {
             $port = ((int) getenv("CACHE_REDIS_SERVER{$index}_PORT")) ?: -1;

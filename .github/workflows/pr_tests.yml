@@ -63,6 +63,8 @@ jobs:
                         redis
             -
                 name: 'Lint - phpcs'
+                if: >
+                    startsWith(matrix.php_version, '8.1') == true
                 uses: 'php-actions/composer@v6'
                 with:
                     version: '2.x'
@@ -77,6 +79,24 @@ jobs:
                         redis
                     command: 'run'
                     args: "lint:phpcs"
+            -
+                name: 'Lint - phpstan'
+                if: >
+                    startsWith(matrix.php_version, '8.1') == true
+                uses: 'php-actions/composer@v6'
+                with:
+                    version: '2.x'
+                    php_version: '${{ matrix.php_version }}'
+                    php_extensions: >-
+                        apcu
+                        memcache
+                        memcached
+                        pcov
+                        pdo
+                        pdo_sqlite
+                        redis
+                    command: 'run'
+                    args: "lint:phpstan"
             -
                 name: 'Test - PHPCache'
                 uses: 'php-actions/composer@v6'

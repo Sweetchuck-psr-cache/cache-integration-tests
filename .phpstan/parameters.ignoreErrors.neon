@@ -1,0 +1,11 @@
+parameters:
+    ignoreErrors:
+        -
+            message: "#^Parameter \\#1 \\$expiration of method Psr\\\\Cache\\\\CacheItemInterface\\:\\:expiresAt\\(\\) expects DateTimeInterface\\|null, DateTime\\|false given\\.$#"
+            count: 3
+            path: ../src/CachePoolTest.php
+
+        -
+            message: "#^Result of \\|\\| is always true\\.$#"
+            count: 1
+            path: ../src/CachePoolTest.php

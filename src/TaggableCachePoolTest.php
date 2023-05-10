@@ -55,6 +55,9 @@ abstract class TaggableCachePoolTest extends TestCase
         $this->cache?->clear();
     }
 
+    /**
+     * @phpstan-return array<string, array{0: string}>
+     */
     public static function invalidKeys(): array
     {
         return CachePoolTest::invalidKeys();
@@ -128,7 +131,7 @@ abstract class TaggableCachePoolTest extends TestCase
     /**
      * @dataProvider invalidKeys
      */
-    public function testTagAccessorWithInvalidTag($tag): void
+    public function testTagAccessorWithInvalidTag(mixed $tag): void
     {
         $this->skipIf(__FUNCTION__);
 

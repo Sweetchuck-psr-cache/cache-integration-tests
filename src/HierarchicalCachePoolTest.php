@@ -34,6 +34,8 @@ abstract class HierarchicalCachePoolTest extends TestCase
 
     /**
      * @before
+     *
+     * @return void
      */
     public function setupService()
     {
@@ -42,6 +44,8 @@ abstract class HierarchicalCachePoolTest extends TestCase
 
     /**
      * @after
+     *
+     * @return void
      */
     public function tearDownService()
     {

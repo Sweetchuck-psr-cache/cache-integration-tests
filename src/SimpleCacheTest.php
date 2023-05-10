@@ -54,6 +54,8 @@ abstract class SimpleCacheTest extends TestCase
 
     /**
      * @before
+     *
+     * @return void
      */
     public function setupService()
     {
@@ -62,6 +64,8 @@ abstract class SimpleCacheTest extends TestCase
 
     /**
      * @after
+     *
+     * @return void
      */
     public function tearDownService()
     {
@@ -70,19 +74,23 @@ abstract class SimpleCacheTest extends TestCase
 
     /**
      * Data provider for invalid cache keys.
+     *
+     * @phpstan-return array<string, array{0: mixed}>
      */
     public static function invalidKeys(): array
     {
         return array_merge(
             static::invalidArrayKeys(),
             [
-                [2],
-            ]
+                'int' => [2],
+            ],
         );
     }
 
     /**
      * Data provider for invalid array keys.
+     *
+     * @phpstan-return array<string, array{0: mixed}>
      */
     public static function invalidArrayKeys(): array
     {
@@ -110,6 +118,8 @@ abstract class SimpleCacheTest extends TestCase
 
     /**
      * Data provider for valid keys.
+     *
+     * @phpstan-return array<array{0: string}>
      */
     public static function validKeys(): array
     {
@@ -121,6 +131,8 @@ abstract class SimpleCacheTest extends TestCase
 
     /**
      * Data provider for valid data to store.
+     *
+     * @phpstan-return array<array{0: mixed}>
      */
     public static function validData(): array
     {
@@ -391,7 +403,7 @@ abstract class SimpleCacheTest extends TestCase
     /**
      * @dataProvider invalidKeys
      */
-    public function testGetInvalidKeys($key): void
+    public function testGetInvalidKeys(mixed $key): void
     {
         $this->skipIf(__FUNCTION__);
 
@@ -414,7 +426,7 @@ abstract class SimpleCacheTest extends TestCase
     /**
      * @dataProvider invalidKeys
      */
-    public function testGetMultipleInvalidKeys($key): void
+    public function testGetMultipleInvalidKeys(mixed $key): void
     {
         $this->skipIf(__FUNCTION__);
 
@@ -437,7 +449,7 @@ abstract class SimpleCacheTest extends TestCase
     /**
      * @dataProvider invalidKeys
      */
-    public function testSetInvalidKeys($key): void
+    public function testSetInvalidKeys(mixed $key): void
     {
         $this->skipIf(__FUNCTION__);
 
@@ -460,7 +472,7 @@ abstract class SimpleCacheTest extends TestCase
     /**
      * @dataProvider invalidArrayKeys
      */
-    public function testSetMultipleInvalidKeys($key): void
+    public function testSetMultipleInvalidKeys(mixed $key): void
     {
         $this->skipIf(__FUNCTION__);
         $values = function () use ($key) {
@@ -488,7 +500,7 @@ abstract class SimpleCacheTest extends TestCase
     /**
      * @dataProvider invalidKeys
      */
-    public function testHasInvalidKeys($key): void
+    public function testHasInvalidKeys(mixed $key): void
     {
         $this->skipIf(__FUNCTION__);
 
@@ -510,7 +522,7 @@ abstract class SimpleCacheTest extends TestCase
     /**
      * @dataProvider invalidKeys
      */
-    public function testDeleteInvalidKeys($key): void
+    public function testDeleteInvalidKeys(mixed $key): void
     {
         $this->skipIf(__FUNCTION__);
 
@@ -533,7 +545,7 @@ abstract class SimpleCacheTest extends TestCase
     /**
      * @dataProvider invalidKeys
      */
-    public function testDeleteMultipleInvalidKeys($key): void
+    public function testDeleteMultipleInvalidKeys(mixed $key): void
     {
         $this->skipIf(__FUNCTION__);
 
@@ -637,7 +649,6 @@ abstract class SimpleCacheTest extends TestCase
             $data .= chr($i);
         }
 
-        $array = ['a' => 'foo', 2 => 'bar'];
         $this->cache->set('key', $data);
         $result = $this->cache->get('key');
         static::assertTrue($data === $result, 'Binary data must survive a round trip.');
@@ -645,6 +656,8 @@ abstract class SimpleCacheTest extends TestCase
 
     /**
      * @dataProvider validKeys
+     *
+     * @phpstan-param string $key
      */
     public function testSetValidKeys($key): void
     {
@@ -656,6 +669,8 @@ abstract class SimpleCacheTest extends TestCase
 
     /**
      * @dataProvider validKeys
+     *
+     * @phpstan-param string $key
      */
     public function testSetMultipleValidKeys($key): void
     {
@@ -675,7 +690,7 @@ abstract class SimpleCacheTest extends TestCase
     /**
      * @dataProvider validData
      */
-    public function testSetValidData($data): void
+    public function testSetValidData(mixed $data): void
     {
         $this->skipIf(__FUNCTION__);
 
@@ -686,7 +701,7 @@ abstract class SimpleCacheTest extends TestCase
     /**
      * @dataProvider validData
      */
-    public function testSetMultipleValidData($data): void
+    public function testSetMultipleValidData(mixed $data): void
     {
         $this->skipIf(__FUNCTION__);
 
